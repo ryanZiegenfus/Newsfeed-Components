@@ -85,6 +85,15 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Ryan Ziegenfus Finished His Project',
+    date: 'Aug 7th, 2019',
+    firstParagraph: `Brain hurts `,
+
+    secondParagraph: `Need bigger brain`,
+
+    thirdParagraph: `zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz`
   }
 ];
 
@@ -112,3 +121,52 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new artible
 
 */
+
+
+function compConstructor(obj) {
+  const articleDiv = document.createElement('div');
+  const articleTitle = document.createElement('h2');
+  const articleDate = document.createElement('p');
+  const p1 = document.createElement('p');
+  const p2 = document.createElement('p');
+  const p3 = document.createElement('p');
+  const expandBtn = document.createElement('span');
+  articleDiv.classList.add('article');
+  articleDate.classList.add('date');
+  expandBtn.classList.add('expandButton');
+
+
+
+
+  articleTitle.textContent = obj.title;
+  articleDate.textContent = obj.date;
+  p1.textContent = obj.firstParagraph;
+  p2.textContent = obj.secondParagraph;
+  p3.textContent = obj.thirdParagraph;
+  expandBtn.textContent = 'Click to expand';
+
+  articleDiv.appendChild(articleTitle);
+  articleDiv.appendChild(articleDate);
+  articleDiv.appendChild(p1);
+  articleDiv.appendChild(p2);
+  articleDiv.appendChild(p3);
+  articleDiv.appendChild(expandBtn);
+
+  
+  function expandToggle() {
+    articleDiv.classList.value.includes('article-open') ? articleDiv.classList.remove('article-open') : articleDiv.classList.add('article-open');
+    console.log(articleDiv.classList);
+  }
+
+  expandBtn.addEventListener('click', expandToggle);
+  console.log(articleDiv.classList);
+  return articleDiv;
+}
+
+const articles = document.querySelector('.articles');
+
+
+
+data.forEach((element) => {
+  articles.appendChild(compConstructor(element));
+})
